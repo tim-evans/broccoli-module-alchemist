@@ -57,5 +57,5 @@ function exists(path) {
 }
 
 function contains(path, content) {
-  expect(fs.readFileSync(path).indexOf(content) > -1, path + ' contains ' + content).to.be.true;
+  expect(fs.readFileSync(path).toString().indexOf(content) > -1, path + ' contains ' + content).to.be.true;
 }
