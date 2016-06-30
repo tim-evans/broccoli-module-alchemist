@@ -8,6 +8,8 @@ var spawnSync = require('child_process').spawnSync;
 var emberCLIPath = path.resolve(__dirname, '../node_modules/ember-cli/bin/ember');
 
 describe('JavaScript projects', function() {
+  this.timeout(20000);
+
   var fixture = path.resolve(__dirname, './fixtures/simple-app');
 
   beforeEach(function() {
