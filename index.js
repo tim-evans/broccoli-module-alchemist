@@ -1,11 +1,18 @@
 var fs = require('fs');
-var typeScript = require('broccoli-typescript-compiler');
+var TypeScriptCompiler = require('broccoli-typescript-compiler');
 var findupSync = require('findup-sync');
 var path = require('path');
 var stew = require('broccoli-stew');
 var mergeTrees = require('broccoli-merge-trees');
 var rollup = require('broccoli-rollup');
 var assert = require('assert');
+
+function typeScript(node, options) {
+  var tree = new TypeScriptCompiler(node, options);
+  tree.extensions.push('js');
+
+  return tree;
+}
 
 module.exports = function(options) {
   options = options || {};
