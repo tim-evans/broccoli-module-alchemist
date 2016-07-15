@@ -17,8 +17,6 @@ module.exports = function() {
 }
 ```
 
-To transpile your source code into 
-
 ## Authoring JavaScript and TypeScript
 
 Place your package's source code in a root `src` directory. TypeScript files should have the extension `.ts`, while JavaScript files should have the extension `.js`.
