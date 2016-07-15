@@ -34,7 +34,7 @@ describe('JavaScript projects', function() {
     exists(dist('js'));
     exists(dist('js/index.js'));
 
-    contains(dist('js/index.js'), "export default function()");
+    contains(dist('js/index.js'), "export default function ()");
     contains(dist('js/foo.js'), "return 'foo';");
     contains(dist( 'js/bar.js'), "return 'bar';");
     contains(dist( 'js/index.js'), "return 'default';");
