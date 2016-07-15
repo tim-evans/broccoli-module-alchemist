@@ -71,6 +71,16 @@ describe('JavaScript projects', function() {
     }
 
   });
+
+  it('produces a CommonJS build', function() {
+    exists(dist('cjs'));
+
+    var simpleApp = require(dist('cjs'));
+
+    expect(simpleApp.default()).to.equal('default');
+    expect(simpleApp.foo()).to.equal('foo');
+    expect(simpleApp.bar()).to.equal('bar');
+  });
 });
 
 function buildPackage(packagePath) {
