@@ -31,13 +31,13 @@ describe('JavaScript projects', function() {
   });
 
   it('produces an ES6 build', function() {
-    exists(dist('es6'));
-    exists(dist('es6/index.js'));
+    exists(dist('js'));
+    exists(dist('js/index.js'));
 
-    contains(dist('es6/index.js'), "export default function()");
-    contains(dist('es6/foo.js'), "return 'foo';");
-    contains(dist( 'es6/bar.js'), "return 'bar';");
-    contains(dist( 'es6/index.js'), "return 'default';");
+    contains(dist('js/index.js'), "export default function ()");
+    contains(dist('js/foo.js'), "return 'foo';");
+    contains(dist( 'js/bar.js'), "return 'bar';");
+    contains(dist( 'js/index.js'), "return 'default';");
   });
 
   it('produces a UMD build', function() {
@@ -70,6 +70,16 @@ describe('JavaScript projects', function() {
       cleanup(customGlobalPath);
     }
 
+  });
+
+  it('produces a CommonJS build', function() {
+    exists(dist('cjs'));
+
+    var simpleApp = require(dist('cjs'));
+
+    expect(simpleApp.default()).to.equal('default');
+    expect(simpleApp.foo()).to.equal('foo');
+    expect(simpleApp.bar()).to.equal('bar');
   });
 });
 
