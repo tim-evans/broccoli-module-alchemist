@@ -1,6 +1,6 @@
 {
   "name": "broccoli-module-alchemist",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Broccoli-based tool for transforming ES2015 and TypeScript into many different module formats, for Node.js and the browser.",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "broccoli-rollup": "0.0.4",
     "broccoli-stew": "^1.3.1",
     "broccoli-typescript-compiler": "^0.6.1",
-    "findup-sync": "^0.4.1",
+    "findup-sync": "^0.4.2",
     "typescript": "^1.8.10"
   }
 }
