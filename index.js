@@ -14,10 +14,19 @@ function typeScript(node, options) {
   return tree;
 }
 
+function findProjectPath() {
+  var buildPath = findupSync('ember-cli-build.js', process.cwd());
+  if (!buildPath) {
+    buildPath = findupSync('Brocfile.js');
+  }
+
+  return  path.dirname(buildPath);
+}
+
 module.exports = function(options) {
   options = options || {};
 
-  var projectPath = path.dirname(findupSync('ember-cli-build.js', process.cwd()));
+  var projectPath = findProjectPath();
   var projectName = getPackageName(projectPath);
   var srcPath = path.join(projectPath, 'src');
 
