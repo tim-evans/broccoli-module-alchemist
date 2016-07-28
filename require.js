@@ -8,6 +8,6 @@ module.exports = function(requirePath) {
   try {
     return require(path.join(pkgPath, 'src', requirePath));
   } catch (e) {
-    return require(path.join(pkgPath, 'cjs', requirePath));
+    return require(path.join(pkgPath, 'dist/cjs', requirePath));
   }
 };
