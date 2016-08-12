@@ -30,7 +30,7 @@ module.exports = function(options) {
   var projectName = getPackageName(projectPath);
   var srcPath = path.join(projectPath, 'src');
 
-  var targets = options.targets || ['js', 'cjs', 'umd'];
+  var targets = options.targets || ['js', 'cjs', 'umd', 'amd'];
 
   assert.ok(targets instanceof Array, 'targets option must be an array of target formats');
   normalizeTargets(targets);
@@ -102,6 +102,22 @@ module.exports = function(options) {
     umd = stew.mv(umd, 'umd');
 
     outputTrees.push(umd);
+  }
+
+  if (hasTarget('amd')) {
+    var amd = rollup(js, {
+      inputFiles: ['**/*.js'],
+      rollup: {
+        format: 'amd',
+        moduleId: options.moduleName || projectName,
+        entry: options.entry || 'index.js',
+        dest: projectName + '.js'
+      }
+    });
+
+    amd = stew.mv(amd, 'amd');
+
+    outputTrees.push(amd);
   }
 
   return mergeTrees(outputTrees);

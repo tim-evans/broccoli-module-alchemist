@@ -81,6 +81,24 @@ describe('JavaScript projects', function() {
     expect(simpleApp.foo()).to.equal('foo');
     expect(simpleApp.bar()).to.equal('bar');
   });
+
+  it('produces an AMD build', function() {
+    exists(dist('amd'));
+
+    var modules = {};
+    loadGlobal(dist('amd/simple-app.js'), {
+      define: function (name, dependencies, body) {
+        modules[name] = body;
+      }
+    });
+
+    var simpleApp = {};
+    modules['simple-app'](simpleApp);
+
+    expect(simpleApp.default()).to.equal('default');
+    expect(simpleApp.foo()).to.equal('foo');
+    expect(simpleApp.bar()).to.equal('bar');
+  });
 });
 
 function buildPackage(packagePath) {
